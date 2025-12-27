@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Synthesis: Nature, History, and Revolution</title>
+  <meta name="description" content="An open scientific journal hosting articles on Dialectical Materialism, the natural sciences, and the science of revolution." />
+  <meta name="theme-color" content="#111111" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Synthesis: Nature, History, and Revolution" />
+  <meta property="og:description" content="An open scientific journal hosting articles on Dialectical Materialism, the natural sciences, and the science of revolution." />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="./" class="brand-link" aria-label="Synthesis home">
+          <span class="brand-mark" aria-hidden="true">S</span>
+          <span class="brand-text">
+            <span class="brand-title">Synthesis</span>
+            <span class="brand-subtitle">Nature, History, and Revolution</span>
+          </span>
+        </a>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#latest">Latest</a>
+        <a href="#archive">Archive</a>
+        <a href="#submit">Submit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h1>Open science for the struggle to understand and transform the world.</h1>
+        <p class="lead">
+          <strong>Synthesis</strong> publishes research, essays, notes, and reviews at the
+          intersection of dialectical materialism, the natural sciences, and the science of revolution.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="#latest">Read the latest</a>
+          <a class="button button-ghost" href="#submit">Submit an article</a>
+        </div>
+
+        <div class="hero-meta">
+          <span class="pill">No paywalls</span>
+          <span class="pill">No trackers</span>
+          <span class="pill">Plain HTML + JS</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>Scope</h3>
+            <p>
+              We welcome work that treats theory as a guide to practice and practice as the test of theory:
+              dialectics in biology and ecology, physics and chemistry, computation, the history of science,
+              political economy, revolutionary strategy, anti-imperialist struggle, and the concrete analysis
+              of concrete conditions.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Editorial principles</h3>
+            <ul class="clean">
+              <li><strong>Clarity over jargon.</strong> Write for serious readers outside your subfield.</li>
+              <li><strong>Method over mystique.</strong> Explain how claims were produced and what they predict.</li>
+              <li><strong>Materialism.</strong> Locate ideas in history, production, and class relations.</li>
+              <li><strong>Internationalism.</strong> Center the oppressed and colonized; oppose chauvinism.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="note">
+          This site is intentionally simple. All content lives in a small JavaScript file. To publish new work,
+          you edit one list and commit.
+        </p>
+      </div>
+    </section>
+
+    <section id="latest" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Latest articles</h2>
+          <div class="controls" role="search">
+            <label class="sr-only" for="q">Search</label>
+            <input id="q" name="q" type="search" placeholder="Search title, author, tags…" autocomplete="off" />
+            <label class="sr-only" for="tag">Tag</label>
+            <select id="tag" name="tag" aria-label="Filter by tag">
+              <option value="">All tags</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="latestList" class="stack" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="archive" class="section">
+      <div class="container">
+        <h2>Archive</h2>
+        <p class="muted">Older articles (sorted by date). Same content as “Latest,” just a different view.</p>
+        <div id="archiveList" class="stack" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="submit" class="section section-alt">
+      <div class="container">
+        <h2>Submit</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>How to submit</h3>
+            <ol>
+              <li>Write your piece as plain text or Markdown.</li>
+              <li>Include: title, author name(s), date, and 3–6 tags.</li>
+              <li>Send it by email with “Synthesis submission” in the subject.</li>
+            </ol>
+            <p>
+              <a class="button" id="mailtoLink" href="#">Email the editors</a>
+            </p>
+            <p class="muted">
+              Tip: if you don’t want to use email, you can also publish by opening a “pull request” on GitHub.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Format &amp; review</h3>
+            <ul class="clean">
+              <li>We publish: articles, notes, reviews, translations, and rebuttals.</li>
+              <li>Prefer citations and reproducible methods for empirical claims.</li>
+              <li>Clearly separate evidence, inference, and political conclusions.</li>
+              <li>Peer review can be open (signed) or anonymous—author’s choice.</li>
+            </ul>
+            <p class="note">
+              This website does not collect personal data. If you link to external tools (forms, analytics),
+              you’re choosing to add that infrastructure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>License</h2>
+        <p class="muted">
+          Suggested: CC BY 4.0 for articles; MIT for site code. You can change this anytime.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p class="muted">
+        © <span id="year"></span> Synthesis. Built with plain HTML + JS. Hosted on GitHub Pages.
+      </p>
+      <p class="muted">
+        <a href="./">Home</a>
+        <span aria-hidden="true">·</span>
+        <a href="#submit">Submit</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
