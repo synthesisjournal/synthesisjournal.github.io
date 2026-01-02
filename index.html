@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Synthesis: Nature, History, and Revolution</title>
+  <meta name="description" content="Synthesis: Nature, History, and Revolution: Publishing research, essays, political education, and reviews at the intersection of dialectical materialism, the natural sciences, and the science of revolution." />
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --panel:#111823;
+      --panel2:#0f1520;
+      --text:#e6edf3;
+      --muted:#a8b3c2;
+      --border:rgba(230,237,243,0.12);
+      --focus:rgba(230,237,243,0.35);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius:14px;
+      --sidebarW: 280px;
+      --gap: 18px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(63,140,255,0.10), transparent 55%),
+        radial-gradient(900px 700px at 85% 30%, rgba(255,140,77,0.08), transparent 60%),
+        linear-gradient(180deg, var(--bg), #070a0f);
+    }
+    a{color:inherit; text-decoration:none}
+    a:focus{outline:2px solid var(--focus); outline-offset:2px; border-radius:10px}
+    .app{
+      min-height:100%;
+      display:flex;
+    }
+    .sidebar{
+      width:var(--sidebarW);
+      padding:22px 18px;
+      border-right:1px solid var(--border);
+      background: linear-gradient(180deg, rgba(17,24,35,0.92), rgba(12,16,24,0.92));
+      position:sticky;
+      top:0;
+      height:100vh;
+      overflow:auto;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      padding:10px 10px 14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:rgba(15,21,32,0.6);
+      box-shadow: var(--shadow);
+    }
+    .brand h1{
+      margin:0;
+      font-size:18px;
+      line-height:1.15;
+      letter-spacing:0.2px;
+    }
+    .brand p{
+      margin:0;
+      font-size:12.5px;
+      line-height:1.35;
+      color:var(--muted);
+    }
+    .nav{
+      margin-top:16px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .nav a{
+      background: linear-gradient(180deg, rgba(35,56,120,0.25), rgba(15,21,32,0.35));
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:rgba(15,21,32,0.35);
+      transition: transform .08s ease, background .12s ease, border-color .12s ease;
+    }
+    .nav a:hover{
+      background: linear-gradient(180deg, rgba(55,86,180,0.35), rgba(15,21,32,0.6));
+
+      transform: translateY(-1px);
+      background:rgba(15,21,32,0.6);
+      border-color:rgba(230,237,243,0.18);
+    }
+    .nav a[aria-current="page"]{
+      background: linear-gradient(180deg, rgba(140,90,40,0.35), rgba(230,237,243,0.06));
+
+      background:rgba(230,237,243,0.06);
+      border-color:rgba(230,237,243,0.26);
+    }
+    .nav .label{
+      font-size:13.5px;
+      line-height:1.2;
+    }
+
+    .content{
+      flex:1;
+      padding:26px 26px 38px;
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap:10px;
+      margin-bottom:18px;
+    }
+    .pill{
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(15,21,32,0.35);
+      font-size:12.5px;
+      color:var(--muted);
+    }
+
+    .panel{
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:rgba(17,24,35,0.55);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .panelHeader{
+      padding:16px 18px;
+      border-bottom:1px solid var(--border);
+      background:rgba(15,21,32,0.45);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .panelHeader h2{
+      margin:0;
+      font-size:16px;
+      line-height:1.2;
+      letter-spacing:0.2px;
+    }
+    .panelBody{
+      padding:18px;
+    }
+
+    .featuredGrid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+    }
+    .slot{
+      border:1px dashed rgba(230,237,243,0.22);
+      border-radius:var(--radius);
+      background:rgba(15,21,32,0.25);
+      min-height:120px;
+    }
+    .slot:nth-child(1){ grid-column: span 12; min-height:150px; }
+    .slot:nth-child(2){ grid-column: span 6; }
+    .slot:nth-child(3){ grid-column: span 6; }
+    .slot:nth-child(4){ grid-column: span 6; }
+    .slot:nth-child(5){ grid-column: span 6; }
+
+    .section{
+      display:none;
+    }
+    .section.active{
+      display:block;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 900px){
+      .app{flex-direction:column}
+      .sidebar{
+        width:100%;
+        height:auto;
+        position:relative;
+        border-right:none;
+        border-bottom:1px solid var(--border);
+      }
+      .content{padding:18px 16px 28px}
+      .featuredGrid{grid-template-columns: repeat(6, 1fr)}
+      .slot:nth-child(1){ grid-column: span 6; }
+      .slot:nth-child(2),
+      .slot:nth-child(3),
+      .slot:nth-child(4),
+      .slot:nth-child(5){ grid-column: span 6; }
+    }
+  
+
+    /* Simple blue → purple spectrum for nav buttons (including Submit) */
+    .nav a:nth-child(1){ background: #1e3a8a; } /* Home */
+    .nav a:nth-child(2){ background: #25349a; } /* News */
+    .nav a:nth-child(3){ background: #2b2f9e; } /* Essays */
+    .nav a:nth-child(4){ background: #3a28b0; } /* Political Education */
+    .nav a:nth-child(5){ background: #4a22b8; } /* Podcasts */
+    .nav a:nth-child(6){ background: #5b1fc0; } /* Free Apps */
+    .nav a:nth-child(7){ background: #6d1ac3; } /* Other Publications (Party) */
+    .nav a:nth-child(8){ background: #7f15c2; } /* Other Publications (Non-Party) */
+    .nav a:nth-child(9){ background: #8911c0; } /* Submit */
+
+    .nav a{
+      color: #e6edf3;
+      border-color: rgba(230,237,243,0.25);
+    }
+
+    .nav a:hover{
+      filter: brightness(1.08);
+    }
+
+    .nav a[aria-current="page"]{
+      outline: 2px solid rgba(230,237,243,0.6);
+      outline-offset: -2px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" aria-label="Primary">
+      <div class="brand">
+        <h1>Synthesis</h1>
+      </div>
+
+      <nav class="nav" aria-label="Pages">
+        <a href="#home" data-route="home"><span class="label">Home</span></a>
+        <a href="#news" data-route="news"><span class="label">News</span></a>
+        <a href="#essays" data-route="essays"><span class="label">Essays / Critiques</span></a>
+        <a href="#education" data-route="education"><span class="label">Political Education</span></a>
+        <a href="#podcasts" data-route="podcasts"><span class="label">Podcasts</span></a>
+        <a href="#apps" data-route="apps"><span class="label">Free Apps</span></a>
+        <a href="#other-party" data-route="other-party"><span class="label">Other Publications (Party Affiliated)</span></a>
+        <a href="#other-nonparty" data-route="other-nonparty"><span class="label">Other Publications (Non-Party Affiliated)</span></a>
+        <a href="#submit" data-route="submit"><span class="label">Submit / Critique / Comment</span></a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      
+      <section id="home" class="section active" aria-label="Home">
+        <div class="panel">
+          <div class="panelHeader">
+            <h2>Home</h2>
+          </div>
+          
+          <div class="panelBody">
+            <h1 style="margin-top:0;font-size:28px;line-height:1.15;">
+              Synthesis: Nature, History, and Revolution
+            </h1>
+            <p style="max-width:760px;color:var(--muted);font-size:15px;line-height:1.5;">
+              Publishing research, essays, political education, and reviews at the intersection of dialectical materialism,
+              the natural sciences, and the science of revolution.
+            </p>
+            <div style="height:18px"></div>
+            <div class="featuredGrid" aria-label="Featured">
+
+              <div class="slot" data-featured="1"></div>
+              <div class="slot" data-featured="2"></div>
+              <div class="slot" data-featured="3"></div>
+              <div class="slot" data-featured="4"></div>
+              <div class="slot" data-featured="5"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="news" class="section" aria-label="News">
+        <div class="panel">
+          <div class="panelHeader"><h2>News</h2></div>
+          <div class="panelBody"></div>
+        </div>
+      </section>
+
+      <section id="essays" class="section" aria-label="Essays / Critiques">
+        <div class="panel">
+          <div class="panelHeader"><h2>Essays / Critiques</h2></div>
+          <div class="panelBody"></div>
+        </div>
+      </section>
+
+      <section id="education" class="section" aria-label="Political Education">
+        <div class="panel">
+          <div class="panelHeader"><h2>Political Education</h2></div>
+          <div class="panelBody"></div>
+        </div>
+      </section>
+
+      <section id="podcasts" class="section" aria-label="Podcasts">
+        <div class="panel">
+          <div class="panelHeader"><h2>Podcasts</h2></div>
+          <div class="panelBody"></div>
+        </div>
+      </section>
+
+      <section id="apps" class="section" aria-label="Free Apps">
+        <div class="panel">
+          <div class="panelHeader"><h2>Free Apps</h2></div>
+          <div class="panelBody"></div>
+        </div>
+      </section>
+
+      <section id="other-party" class="section" aria-label="Other Publications (Party Affiliated)">
+        <div class="panel">
+          <div class="panelHeader"><h2>Other Publications (Party Affiliated)</h2></div>
+          <div class="panelBody"></div>
+        </div>
+      </section>
+
+      <section id="other-nonparty" class="section" aria-label="Other Publications (Non-Party Affiliated)">
+        <div class="panel">
+          <div class="panelHeader"><h2>Other Publications (Non-Party Affiliated)</h2></div>
+          <div class="panelBody"></div>
+        </div>
+      </section>
+
+      <section id="submit" class="section" aria-label="Submit / Critique / Comment">
+        <div class="panel">
+          <div class="panelHeader"><h2>Submit / Critique / Comment</h2></div>
+          <div class="panelBody"></div>
+        </div>
+      </section>
+
+      <p class="sr-only" id="route-status" aria-live="polite"></p>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      const sections = Array.from(document.querySelectorAll(".section"));
+      const navLinks = Array.from(document.querySelectorAll(".nav a[data-route]"));
+      const status = document.getElementById("route-status");
+
+      function setActive(route) {
+        const targetId = route || "home";
+
+        sections.forEach(sec => sec.classList.toggle("active", sec.id === targetId));
+
+        navLinks.forEach(a => {
+          const isActive = a.getAttribute("data-route") === targetId;
+          if (isActive) a.setAttribute("aria-current", "page");
+          else a.removeAttribute("aria-current");
+        });
+
+        if (status) status.textContent = targetId;
+      }
+
+      function currentRouteFromHash() {
+        const hash = (location.hash || "#home").slice(1);
+        return hash ? hash : "home";
+      }
+
+      window.addEventListener("hashchange", () => setActive(currentRouteFromHash()));
+      setActive(currentRouteFromHash());
+    })();
+  </script>
+</body>
+</html>
